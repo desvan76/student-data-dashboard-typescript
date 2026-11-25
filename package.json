@@ -1,0 +1,24 @@
+{
+  "name": "d4-student-data-dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/desvan76/student-data-dashboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/desvan76/student-data-dashboard/issues"
+  },
+  "homepage": "https://github.com/desvan76/student-data-dashboard#readme",
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}
