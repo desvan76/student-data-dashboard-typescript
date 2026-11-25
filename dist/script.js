@@ -1,5 +1,5 @@
 "use strict";
-// Mock data siswa
+// mock data siswa
 const siswa = [
     {
         name: "Desvanto",
@@ -52,18 +52,18 @@ const siswa = [
         score: 94
     }
 ];
-// Mengambil elemen HTML
+// mengambil elemen html
 const tabelSiswa = document.getElementById("tabelSiswa");
 const searchInput = document.getElementById("searchInput");
 const totalSiswa = document.getElementById("totalSiswa");
 const rataRataElement = document.getElementById("rataRata");
-// Mengubah tipe elemen menjadi lebih spesifik
+// mengubah tipe elemen menjadi lebih spesifik
 const inputPencarian = searchInput;
-// Fungsi untuk menampilkan data siswa
+// fungsi untuk menampilkan data
 function tampilkanSiswa(data) {
-    // Menggunakan map() untuk merender tabel
+    // menggunakan map() untuk merender tabel
     tabelSiswa.innerHTML = data.map((siswa, index) => {
-        // Menentukan warna nilai
+        // menentukan warna nilai
         let warna;
         if (siswa.score >= 85) {
             warna = "high";
@@ -95,15 +95,15 @@ function tampilkanSiswa(data) {
     const totalNilai = data.reduce((total, siswa) => {
         return total + siswa.score;
     }, 0);
-    // Menghitung rata-rata
+    // menghitung rata-rata
     const rataRata = data.length > 0
         ? (totalNilai / data.length).toFixed(1)
         : "0.0";
-    // Memperbarui rata-rata nilai
+    // memperbarui rata-rata nilai
     rataRataElement.textContent = rataRata;
-    // Memperbarui jumlah siswa
+    // memperbarui jumlah data
     totalSiswa.textContent = String(data.length);
-    // Jika data tidak ditemukan
+    // jika data tidak ditemukan
     if (data.length === 0) {
         tabelSiswa.innerHTML = `
             <tr>
@@ -114,15 +114,15 @@ function tampilkanSiswa(data) {
         `;
     }
 }
-// Event listener untuk fitur pencarian
+// event listener untuk fitur pencarian
 inputPencarian.addEventListener("input", function () {
     const keyword = inputPencarian.value.toLowerCase();
-    // Menggunakan filter() untuk mencari nama siswa
+    // menggunakan filter() untuk mencari nama siswa
     const hasilPencarian = siswa.filter((data) => {
         return data.name.toLowerCase().includes(keyword);
     });
-    // Menampilkan hasil pencarian
+    // menampilkan hasil pencarian
     tampilkanSiswa(hasilPencarian);
 });
-// Menampilkan semua data saat halaman dibuka
+// menampilkan semua data saat halaman dibuka
 tampilkanSiswa(siswa);
