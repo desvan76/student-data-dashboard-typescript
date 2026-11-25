@@ -1,12 +1,12 @@
 
-// Interface untuk menentukan struktur data siswa
+// menentukan struktur data siswa
 interface StudentType {
     name: string;
     class: string;
     score: number;
 }
 
-// Mock data siswa
+// mock data siswa
 const siswa: StudentType[] = [
     {
         name: "Desvanto",
@@ -60,23 +60,23 @@ const siswa: StudentType[] = [
     }
 ];
 
-// Mengambil elemen HTML
+// mengambil elemen html
 const tabelSiswa = document.getElementById("tabelSiswa") as HTMLTableSectionElement;
 const searchInput = document.getElementById("searchInput") as HTMLInputElement;
 const totalSiswa = document.getElementById("totalSiswa") as HTMLElement;
 const rataRataElement = document.getElementById("rataRata") as HTMLElement;
 
-// Mengubah tipe elemen menjadi lebih spesifik
+// mengubah tipe elemen menjadi lebih spesifik
 const inputPencarian = searchInput as HTMLInputElement;
 
-// Fungsi untuk menampilkan data siswa
+// menampilkan data siswa
 function tampilkanSiswa(data: StudentType[]): void {
 
-    // Menggunakan map() untuk merender tabel
+    // map() untuk merender tabel
     tabelSiswa.innerHTML = data.map(
         (siswa: StudentType, index: number): string => {
 
-            // Menentukan warna nilai
+            // menentukan warna nilai
             let warna: string;
 
             if (siswa.score >= 85) {
@@ -106,7 +106,7 @@ function tampilkanSiswa(data: StudentType[]): void {
         }
     ).join("");
 
-    // Menggunakan reduce() untuk menghitung total nilai
+    // reduce() untuk menghitung total nilai
     const totalNilai: number = data.reduce(
         (total: number, siswa: StudentType): number => {
             return total + siswa.score;
@@ -114,18 +114,18 @@ function tampilkanSiswa(data: StudentType[]): void {
         0
     );
 
-    // Menghitung rata-rata
+    // menghitung rata-rata
     const rataRata: string = data.length > 0
         ? (totalNilai / data.length).toFixed(1)
         : "0.0";
 
-    // Memperbarui rata-rata nilai
+    // memperbarui rata-rata nilai
     rataRataElement.textContent = rataRata;
 
-    // Memperbarui jumlah siswa
+    // memperbarui jumlah siswa
     totalSiswa.textContent = String(data.length);
 
-    // Jika data tidak ditemukan
+    // jika data tidak ditemukan
     if (data.length === 0) {
         tabelSiswa.innerHTML = `
             <tr>
@@ -137,22 +137,22 @@ function tampilkanSiswa(data: StudentType[]): void {
     }
 }
 
-// Event listener untuk fitur pencarian
+// event listener untuk fitur pencarian
 inputPencarian.addEventListener("input", function (): void {
 
     const keyword: string = inputPencarian.value.toLowerCase();
 
-    // Menggunakan filter() untuk mencari nama siswa
+    // menggunakan filter() untuk mencari nama siswa
     const hasilPencarian: StudentType[] = siswa.filter(
         (data: StudentType): boolean => {
             return data.name.toLowerCase().includes(keyword);
         }
     );
 
-    // Menampilkan hasil pencarian
+    // menampilkan hasil pencarian
     tampilkanSiswa(hasilPencarian);
 
 });
 
-// Menampilkan semua data saat halaman dibuka
+// menampilkan semua data saat halaman dibuka
 tampilkanSiswa(siswa);
